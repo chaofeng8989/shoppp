@@ -16,8 +16,11 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Column(name = "emailId")
     private String emailId;
+    @Column(name = "password")
     private String password;
+    @Column(name = "enabled")
     private boolean enabled;
 
     @OneToOne(mappedBy = "user")

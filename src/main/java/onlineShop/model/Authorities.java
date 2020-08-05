@@ -16,8 +16,10 @@ public class Authorities implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @Column(name = "emailId")
     private String emailId;
 
+    @Column(name = "authorities")
     private String authorities;
 
 }

@@ -18,8 +18,10 @@ public class CartItem implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @Column(name = "quantity")
     private int quantity;
 
+    @Column(name = "price")
     private double price;
 
     @OneToOne

@@ -18,15 +18,19 @@ public class SalesOrder implements Serializable {
     private int id;
 
     @ManyToOne
+    @JoinColumn(name = "cart_id")
     private Cart cart;
 
     @ManyToOne
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
     @ManyToOne
+    @JoinColumn(name = "shippingAddress_id")
     private ShippingAddress shippingAddress;
 
     @ManyToOne
+    @JoinColumn(name = "billingAddress_id")
     private BillingAddress billingAddress;
 
 }

@@ -21,15 +21,14 @@ public class MVCConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/webapp/**")
-                .addResourceLocations("/webapp/");
         registry.addResourceHandler("/resource/**")
-                .addResourceLocations("classpath:/WEB-INF/resource/");
+                .addResourceLocations("/WEB-INF/resource/");
     }
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/index").setViewName("index");
+        registry
+                .addViewController("/").setViewName("/index");
     }
 
 }

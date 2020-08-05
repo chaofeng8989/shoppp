@@ -1,14 +1,34 @@
 
 package onlineShop.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.jsp.PageContext;
 
 @Controller
 public class HomePageController {
+    @GetMapping(value = "/test1")
+
+    public ResponseEntity test1() {
+
+        return ResponseEntity.ok("Role + login");
+    }
+
+    @GetMapping(value = "/test2")
+    public ResponseEntity test2() {
+
+        Object principal = SecurityContextHolder. getContext(). getAuthentication(). getPrincipal();
+        System.out.println(((UserDetails)principal). getUsername());
+        return ResponseEntity.ok("ADMIN _ login");
+    }
+
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String sayIndex() {

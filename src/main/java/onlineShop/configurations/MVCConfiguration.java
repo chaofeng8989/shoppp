@@ -13,16 +13,15 @@ public class MVCConfiguration implements WebMvcConfigurer {
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix("/WEB-INF/page/");
-        resolver.setSuffix(".jsp");
-        resolver.setViewClass(JstlView.class);
+        resolver.setPrefix("page/");
+        resolver.setSuffix(".html");
         registry.viewResolver(resolver);
     }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resource/**")
-                .addResourceLocations("/WEB-INF/resource/");
+                .addResourceLocations("/resource/");
     }
 
     @Override

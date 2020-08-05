@@ -31,6 +31,7 @@ public class RegistrationController {
             modelAndView.setViewName("register");
             return modelAndView;
         }
+
         customerService.addCustomer(customer);
         modelAndView.setViewName("login");
         modelAndView.addObject("registrationSuccess", "Registered Successfully. Login using username and password");

@@ -1,12 +1,14 @@
 package onlineShop.model;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Data
+@ToString
 @Table(name = "authorities")
 public class Authorities implements Serializable {
 

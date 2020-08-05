@@ -1,6 +1,7 @@
 package onlineShop.model;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -8,6 +9,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "customer")
 @Data
+@ToString
 public class Customer implements Serializable {
 
     private static final long serialVersionUID = 2652327633296064143L;
@@ -22,7 +24,7 @@ public class Customer implements Serializable {
     @Column(name = "customerPhone")
     private String customerPhone;
 
-    @JoinColumn(name = "billingAddress_id")
+    @JoinColumn(name = "shippingAddress_id")
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private ShippingAddress shippingAddress;
 

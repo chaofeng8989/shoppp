@@ -1,16 +1,12 @@
 
 package onlineShop.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.jsp.PageContext;
 
 @Controller
 public class HomePageController {
@@ -31,9 +27,9 @@ public class HomePageController {
 
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String sayIndex() {
+    public ResponseEntity sayIndex() {
         System.out.println("in   say index");
-        return "index";
+        return ResponseEntity.ok("asdfasf");
     }
 
     @RequestMapping("/login")

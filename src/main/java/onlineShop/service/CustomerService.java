@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
-@Transactional
 public class CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
@@ -18,6 +17,7 @@ public class CustomerService {
     @Autowired
     private AuthoritiesRepository authoritiesRepository;
 
+    @Transactional
     public void addCustomer(Customer customer) {
         Authorities authorities = new Authorities();
         authorities.setAuthorities("ROLE_USER");

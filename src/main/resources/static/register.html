@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Register Here</title>
+	<link rel="icon" type="image/x-icon" href="resource/images/favicon.png" />
+	<link rel="stylesheet" href="resource/bootstrap/css/bootstrap.min.css">
+
+
+	<link rel="stylesheet" type="text/css" href="resource/css/register.css">
+
+	<script type="text/javascript" src="resource/js/jquery.js" defer></script>
+	<script type="text/javascript" src="resource/js/jquery.serializejson.min.js" defer></script>
+	<script type="text/javascript" src="resource/bootstrap/js/bootstrap.min.js" ></script>
+		<!-- Validating Password -->
+		<script type="text/javascript">
+			$(function(){
+				$("#navbar").load("navbar.html");
+				$("#footer").load("footer.html");
+			})
+	
+			function Validate() {
+				var password = document.getElementById("password").value;
+				var confirmpass = document.getElementById("confirmpass").value;
+				if (password != confirmpass) {
+					alert("Password does Not Match!");
+					return false;
+				}
+				return true;
+			}
+			function formSubmit(e) {
+				e.preventDefault(); //This will prevent the default click action
+				var frm = JSON.stringify($("#customer_registration").serializeJSON());
+				console.log(frm);
+				if (Validate){
+					$.ajax({
+						type: 'post',
+						url: 'register_rest',
+						data: frm,
+						contentType: 'application/json',
+						success: function (data) {
+							console.log('Submission was successful.');
+							console.log(data);
+						},
+						error: function (data) {
+							console.log('An error occurred.');
+							console.log(data);
+						}
+					});
+				}
+			}
+		</script>
+
+</head>
+
+<body>
+	<div id="navbar"></div>
+	<div class="container" style="margin-bottom: 19px">
+		<h1 class="well">Register</h1>
+		<div class="col-lg-12 well">
+			<div class="row">
+				<url value="/register_rest" var="url"></url>
+				<form id="customer_registration", enctype='application/json'>
+					<div class="col-sm-12">
+						<div class="row">
+							<div>
+								<!-- <center>User Details</center> -->
+							</div>
+							<div class="col-sm-6 form-group">
+								<label>First Name</label> <input type="firstName"
+								class="form-control" name="firstName" />
+							</div>
+							<div class="col-sm-6 form-group">
+								<label>Last Name</label> <input type="lastName"
+								class="form-control" name="lastName" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6 form-group">
+								<label>Email Id</label> <input type="emailId"
+								class="form-control" name="user[emailId]" />
+							</div>
+							<div class="col-sm-6 form-group">
+								<label>Phone Number</label> <input type="customerPhone"
+								class="form-control" name="customerPhone" />
+							</div>
+						</div>
+						<hr>
+						<div>
+							<center>Shipping Address</center>
+						</div>
+						<div class="form-group">
+							<label>Address</label> <input type="shipping_address"
+								class="form-control" name="shippingAddress[address]" />
+								
+						</div>
+						<div class="row">
+							<div class="col-sm-6 form-group">
+								<label>City</label> <input type="shipping_city"
+								 class="form-control" name="shippingAddress[city]" />
+							</div>
+							<div class="col-sm-6 form-group">
+								<label>State</label> <input type="shipping_state"
+								 class="form-control" name="shippingAddress[state]" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6 form-group">
+								<label>Country</label> <input type="shipping_country"
+								 class="form-control" name="shippingAddress[country]" />
+							</div>
+							<div class="col-sm-6 form-group">
+								<label>ZipCode</label> <input type="shipping_zipcode"
+								 class="form-control" name="shippingAddress[zipcode]" />
+							</div>
+						</div>
+						<hr>
+						<div>
+							<center>Billing Address</center>
+						</div>
+						<div class="form-group">
+							<label>Address</label> <input type="billing_address"
+								class="form-control" name="billingAddress[address]" />
+								
+						</div>
+						<div class="row">
+							<div class="col-sm-6 form-group">
+								<label>City</label> <input type="billing_city"
+								 class="form-control" name="billingAddress[city]" />
+							</div>
+							<div class="col-sm-6 form-group">
+								<label>State</label> <input type="billing_state"
+								 class="form-control" name="billingAddress[state]" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6 form-group">
+								<label>Country</label> <input type="billing_country"
+								 class="form-control" name="billingAddress[country]" />
+							</div>
+							<div class="col-sm-6 form-group">
+								<label>ZipCode</label> <input type="billing_zipcode"
+								 class="form-control" name="billingAddress[zipcode]" />
+							</div>
+						</div>
+
+
+						<div class="row">
+							<div class="col-sm-6 form-group">
+								<label>Password</label> <input type="password"
+									placeholder="******" class="form-control" name="user[password]" />
+							</div>
+							<div class="col-sm-6 form-group">
+								<label>Confirm Password</label> <input type="password"
+									placeholder="******" class="form-control" name="confirmpass" />
+							</div>
+						</div>
+
+
+						<div class="form-actions">
+							<button type="submit" class="btn btn-lg btn-info" onclick="formSubmit(event)">Submit</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div id="footer"></div>
+</body>
+
+</html>

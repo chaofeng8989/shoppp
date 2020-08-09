@@ -27,9 +27,9 @@ public class HomePageController {
 
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public ResponseEntity sayIndex() {
+    public String sayIndex() {
         System.out.println("in   say index");
-        return ResponseEntity.ok("asdfasf");
+        return "index";
     }
 
     @RequestMapping("/login")
